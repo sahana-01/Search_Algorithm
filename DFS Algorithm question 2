@@ -1,0 +1,28 @@
+def dfs(graph, node, visited):
+    if node not in visited:
+        print(node)             # Process the node (you can replace this with your desired action)
+        visited.add(node)       # Mark the node as visited
+        for neighbor in graph[node]:
+            dfs(graph, neighbor, visited)
+
+# Example usage:
+graph = {
+    'S': {'A','B', 'C'},
+    'A': {'S','D', 'E'},
+    'B': {'S','F', 'G'},
+    'C': {'S','H', 'J'},
+    'D': {'A','K'},
+    'E': {'M', 'A'},
+    'F': {'B','O'},
+    'G': {'B','O','H'},
+    'H': {'G','C'},
+    'J': {'C','R','T'},
+    'K': {'D', 'M'},
+    'M': {'E','O'},
+    'O': {'F','G'},
+    'R': {'J','T'},
+    'T': {'R','J'}
+}
+
+visited = set()  # Initialize a set to keep track of visited nodes
+dfs(graph, 'G', visited)
