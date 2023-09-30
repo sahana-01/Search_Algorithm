@@ -1,0 +1,24 @@
+rom collections import deque
+
+def bfs(graph, start):
+    visited = set()             # Keep track of visited nodes
+    queue = deque([start])      # Initialize the queue with the starting node
+    
+    while queue:
+        node = queue.popleft()  # Dequeue the next node
+        if node not in visited:
+            print(node)         # Process the node (you can replace this with your desired action)
+            visited.add(node)   # Mark the node as visited
+            queue.extend(graph[node] - visited)  # Enqueue unvisited neighbors
+
+# Example usage:
+graph = {
+    'S': {'A','D'},
+    'A': {'S','B'},
+    'B': {'A','C', 'G'},
+    'C': {'B','G'},
+    'D': {'S','G'},
+    'G': {'B','C','D'}
+}
+
+bfs(graph, 'G')
